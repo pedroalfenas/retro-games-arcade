@@ -1,0 +1,291 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+body{
+  min-height: 100vh;
+}
+.voltar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  width: 110px;
+  font-size: 22px;
+  background-color: #1e2a78;
+  border: 3px solid #0a0f30;
+  border-radius: 8px;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+.voltar a{
+  color: #fff200;
+}
+.voltar:hover{
+  background-color: #9b139b;
+}
+
+
+
+/*body's*/
+.body-index{
+  background-image: url(./img/fundo-index.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.body-sobre{
+  background-color: rgba(0, 0, 0, 0.966);
+}
+.body-tabela{
+  background-image: url(./img/fundo-tabela.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.body-form{
+  background-image: url(./img/fundo-form.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.body-json{
+  background-image: url(./img/fundo-json.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/*index*/
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, #000000 305, #2e0854 1005);
+  border-bottom: 2px solid black;
+  color: white;
+  height: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.h1-index{
+  display: inline-block;
+  color: #e5fd0b;
+}
+ul{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+li{
+  font-size: 24px;
+  border-radius: 8px;
+  height: 50px;
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+ul a{
+  text-decoration: none;
+  color: #fff200;
+  font-weight: bold;
+}
+ul li:hover{
+  background-color: #2437ad;
+  border: 3px solid #0a0f30;
+}
+.texto-E-imagem{
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+.texto{
+  padding: 25px;
+  background-color: #1f0636;
+  height: 853px;
+}
+.texto h2{
+  margin-top: 30px;
+  margin-bottom: 100px;
+  font-size: 42px;
+  color: #fff200;
+}
+.texto p{
+  font-size: 32px;
+  color: #ff00ff;
+}
+
+
+
+/*tabela*/
+.h1-tabela{
+  color: #ff00ff;
+  font-size: 50px;
+}
+.tabela{
+  color: #fff200;
+  margin-top: 50px;
+  margin-bottom: 70px;
+  width: 60%;
+  height: 375px;
+  text-align: left;
+  border: 1px solid #ff00ff;
+  border-collapse: collapse;
+}
+.tabela th{
+  color: #00ffff;
+}
+.tabela th, .tabela td{
+  padding: 10px 20px;
+  border-bottom: 1px solid #ff00ff;
+  border-collapse: collapse;
+}
+
+
+
+/*sobre*/
+.fundo-sobre {
+  background-image: url(./img/fundo-sobre.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tela-visor {
+  width: 35%;
+  height: 38%;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tela-visor h1{
+  color: #6200ff;
+  font-size: 32px;
+}
+.tela-visor p{
+  margin: 20px 10px 40px 10px;
+  font-size: 22px;
+}
+
+
+
+/*formulario*/
+form{
+  background-color: #0b0214;
+  color: white;
+  border: 4px solid #ff00ff;
+  border-radius: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 40%;
+  height: 600px;
+  margin-left: 30%;
+  margin-top: 8%;
+}
+form .voltar{
+  margin-left: 140px;
+}
+.label-input{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 22px;
+}
+label{
+  color: #fff200;
+  margin-bottom: 5px;
+}
+input{
+  background-color: #1a0933;
+  border: 2px solid #ff00ff;
+  height: 30px;
+  color: #00ffff;
+  letter-spacing: 1.5px;
+}
+form h1{
+  font-size: 40px;
+  color: #00ffff;
+}
+button{
+  padding: 16px 22px;
+  font-size: 18px;
+  margin-left: 40px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}
+#btn-registrar{
+  background-color: #fff200;
+  color: black;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+#btn-baixar-json{
+  background-color: #ff00ff;
+  color: black;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+#btn-registrar:hover{
+  background-color: #00ffff;
+}
+#btn-baixar-json:hover{
+  background-color: #00ffff;
+}
+
+
+
+/*registros*/
+.h1-registros{
+  color: #fff200;
+  margin-top: 100px;
+  font-size: 40px;
+}
+.tabela-json{
+  color: #ff00ff;
+  background-color: rgba(0, 0, 0, 0.884);
+  margin: 50px auto 70px auto;
+  width: 60%;
+  height: 175px;
+  text-align: left;
+  border: 2px solid #00ffff;
+  border-collapse: collapse;
+}
+.tabela-json th{
+  background-color: #2c0a4e;
+}
+.tabela-json td{
+  color: white;
+  letter-spacing: 1px;
+}
+.tabela-json th, .tabela-json td{
+  padding: 10px 20px;
+  border: 2px solid #00ffff;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 24px;
+}

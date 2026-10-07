@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Recordes</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body class="body-form">
+
+    <form id="form-medico">
+        <h1 class="titulo-form-medico">Registre seu Recorde</h1>
+
+        <div class="label-input">
+            <label for="nome_medico">Nome do Jogo:</label>
+            <input type="text" id="nome_medico" name="nome_medico" required placeholder="Digite Aqui">
+        </div>
+
+        <div class="label-input">
+            <label for="crm">Data do Recorde:</label>
+            <input type="date" id="crm" name="crm" required placeholder="Digite Aqui">
+        </div>
+
+        <div class="label-input">
+            <label for="especialidade">Jogador:</label>
+            <input type="text" id="especialidade" name="especialidade" required placeholder="Digite Aqui">
+        </div>
+
+        <div class="label-input">
+            <label for="contato_medico">Pontuação/Tempo:</label>
+            <input type="text" id="contato_medico" name="contato_medico" required placeholder="Digite Aqui">
+        </div>
+
+        <!-- BOTÕES LADO A LADO -->
+        <div class="botoes-form-medico">
+
+            <button id="btn-registrar" type="submit">Registrar</button>
+
+            <button type="button" id="btn-baixar-json">Baixar JSON</button>
+
+            <div class="voltar">
+                <a href="index.html">Voltar</a>
+            </div>
+
+        </div>
+
+    </form>
+
+    <!-- MENSAGEM -->
+    <p class="mensagem" id="mensagem"></p>
+
+    <script>
+        const CHAVE_STORAGE = "medicos";
+
+        const form = document.getElementById("form-medico");
+        const mensagem = document.getElementById("mensagem");
+        const btnBaixarJson = document.getElementById("btn-baixar-json");
+
+        // Lê a lista atual de médicos guardada no localStorage
+        function obterMedicos() {
+            const dados = localStorage.getItem(CHAVE_STORAGE);
+            return dados ? JSON.parse(dados) : [];
+        }
+
+        // Salva a lista de médicos de volta no localStorage
+        function salvarMedicos(medicos) {
+            localStorage.setItem(CHAVE_STORAGE, JSON.stringify(medicos, null, 4));
+        }
+
+        // Evento de envio do formulário
+        form.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+
+            const nome_medico = document.getElementById("nome_medico").value.trim();
+            const crm = document.getElementById("crm").value.trim();
+            const especialidade = document.getElementById("especialidade").value.trim();
+            const contato_medico = document.getElementById("contato_medico").value.trim();
+
+            if (!nome_medico || !crm || !especialidade || !contato_medico) {
+                mensagem.textContent = "Por favor, preencha todos os campos.";
+                return;
+            }
+
+            const novoMedico = {
+                id: Date.now().toString(),
+                nome_medico,
+                crm,
+                especialidade,
+                contato_medico,
+                data_cadastro: new Date().toLocaleString("pt-BR")
+            };
+
+            const medicos = obterMedicos();
+            medicos.push(novoMedico);
+            salvarMedicos(medicos);
+
+            mensagem.textContent = "Médico cadastrado com sucesso!";
+            form.reset();
+        });
+
+        // Botão para baixar todos os dados como arquivo medicos.json
+        btnBaixarJson.addEventListener("click", function () {
+            const medicos = obterMedicos();
+
+            if (medicos.length === 0) {
+                mensagem.textContent = "Nenhum médico cadastrado ainda.";
+                return;
+            }
+
+            const conteudo = JSON.stringify(medicos, null, 4);
+            const blob = new Blob([conteudo], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "medicos.json";
+            link.click();
+
+            URL.revokeObjectURL(url);
+        });
+    </script>
+
+</body>
+
+</html>

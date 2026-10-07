@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordes Cadastrados</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body class="body-json">
+    <h1 class="h1-registros">Recordes cadastrados</h1>
+
+    <p class="mensagem" id="mensagem"></p>
+
+    <table class="tabela-json" id="tabela-medicos">
+        <thead>
+            <tr>
+                <th>Nome do Jogo</th>
+                <th>Data do Recorde</th>
+                <th>Jogador</th>
+                <th>Pontuação/Tempo</th>
+                <th>Data do Registro</th>
+            </tr>
+        </thead>
+        <tbody id="corpo-tabela">
+        </tbody>
+    </table>
+
+    <div class="voltar">
+                <a href="index.html">Voltar</a>
+            </div>
+    <script>
+        const CHAVE_STORAGE = "medicos";
+        const mensagem = document.getElementById("mensagem");
+        const corpoTabela = document.getElementById("corpo-tabela");
+        const tabela = document.getElementById("tabela-medicos");
+
+        function obterMedicos() {
+            const dados = localStorage.getItem(CHAVE_STORAGE);
+            return dados ? JSON.parse(dados) : [];
+        }
+
+        function exibirMedicos() {
+            const medicos = obterMedicos();
+
+            if (medicos.length === 0) {
+                mensagem.textContent = "Nenhum recorde cadastrado ainda.";
+                tabela.style.display = "none";
+                return;
+            }
+
+            mensagem.textContent = "";
+            tabela.style.display = "table";
+            corpoTabela.innerHTML = "";
+
+            medicos.forEach(function (medico) {
+                const linha = document.createElement("tr");
+                linha.innerHTML = `
+                    <td>${medico.nome_medico}</td>
+                    <td>${medico.crm}</td>
+                    <td>${medico.especialidade}</td>
+                    <td>${medico.contato_medico}</td>
+                    <td>${medico.data_cadastro}</td>
+                `;
+                corpoTabela.appendChild(linha);
+            });
+        }
+
+        exibirMedicos();
+    </script>
+
+</body>
+</html>
